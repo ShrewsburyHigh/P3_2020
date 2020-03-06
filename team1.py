@@ -6,12 +6,11 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = "a and w"  # Only 10 chars displayed.
-strategy_name = 'one in a million'
-strategy_description = 'How does this strategy decide?'
    
+team_name='Eaters'
+strategy_name= 'BigEats'
+strategy_description = 'our strategy betrays the first 5 times then uses the data from the opponents hisotry to make a decision to collude or not'
     
-import random 
   
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -20,15 +19,17 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if len(my_history)==0:
+            
+    x=their_history.count('b')        
+    if len(their_history)<=6:
         return 'b'
-    
-    else: 
-        r= random.randint(1,1000)
-        if r==5:
-            return 'c'
-        else:
-            return 'b'
+    elif float(x/len(their_history))<=0.25:
+        return 'b'
+    else:
+        return 'c'
+        
+
+        
         
     
 
