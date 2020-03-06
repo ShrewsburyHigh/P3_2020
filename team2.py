@@ -1,4 +1,4 @@
-####
+#### The Law Firm Pratt and Roberts
 # Each team's file must define four tokens:
 #     team_name: a string
 #     strategy_name: a string
@@ -6,9 +6,9 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = "East-West" # Only 10 chars displayed.
-strategy_name = "I'm nice until you cross me."
-strategy_description = "We collude except when we've been severely punished."
+team_name = 'Kelps Kustoms' # Only 10 chars displayed.
+strategy_name = 'kelpKO'
+strategy_description = "We collude until we're screwed."
     
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -25,14 +25,24 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    
-    if len(my_history) == 0: # It's the first round; collude.
-        return 'c'
+   #  gamecnt = len(their_history)
+   #  betrayflag = False
+   #  if len(my_history)==0: # It's the first round; collude.
+   #      return 'c'
+   #  while gamecnt>0:
+   #      if their_history[gamecnt] == 'b':
+   #          return 'b'
+   #      gamecnt -= 1
+   # 
+   #  return 'c'
+    if len(my_history)==0: # It's the first round; collude.
+        return 'c'    
+    elif their_history[(len(their_history)-2)] == 'b':
+        return 'b'
     else:
-        if my_history[-1]=='c' and their_history[-1]=='b':
-            return 'b' # Betray if severely punished last time,
-        else:
-            return 'c' # otherwise collude.
+        return 'c'
+  
+        
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
